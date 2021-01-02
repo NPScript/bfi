@@ -43,7 +43,8 @@ int parse_arg(int argc, char ** argv) {
 	if (argc > 3) {
 		error = "Too many arguments";
 		return ERR_FLAG;
-	}
+	} else if (argc == 1)
+		return HELP_FLAG;
 	
 	for (int i = 0; i < argc; ++i) {
 		if (std::string(argv[i]) == "-d" || std::string(argv[i]) == "--debug")
