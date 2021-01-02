@@ -18,7 +18,7 @@ Install it with:
 sudo make install
 ```
 
-# Uninstall
+## Uninstall
 
 Uninstall it with:
 
