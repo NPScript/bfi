@@ -119,6 +119,9 @@ void wait() {
 }
 
 void run() {
+	if (debug_mode)
+		refresh_dbg();
+
 	while (script.ptr < script.data + script.data_size) {
 		if (*script.ptr == '+') {
 			++script.cells[script.cell_ptr];
@@ -134,7 +137,10 @@ void run() {
 		else if (*script.ptr == '.')
 			print(script.cells[script.cell_ptr]);
 		else if (*script.ptr == ',')
-			script.cells[script.cell_ptr] = getchr();
+			if (debug_mode)
+				script.cells[script.cell_ptr] = getchr();
+			else
+				std::cin >> script.cells[script.cell_ptr];
 		else if (*script.ptr == '[' && !script.cells[script.cell_ptr]) {
 			size_t bcount = 0;
 			while (*script.ptr != ']' || bcount) {
